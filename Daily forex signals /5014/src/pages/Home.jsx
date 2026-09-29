@@ -27,9 +27,9 @@ export default function Home() {
   return <>
     <section className="hero"><div className="wrap"><h1>Clear forex trade ideas. Every result on the record.</h1>
       <p className="lead">Entry, stop loss and take profit levels with the reasoning behind them. Wins and losses are published openly.</p>
-      <div className="row wrapx"><a className="btn" href="#latest">See the latest signal</a><a className="btn alt" href={TG} target="_blank" rel="noopener noreferrer" onClick={() => track('/', 'telegram_click')}>JOIN OUR TELEGRAM</a></div></div></section>
+      <div className="row wrapx"><a className="btn" href="#latest">See the latest signal</a><a className="btn alt" href={TG} target="_blank" rel="noopener noreferrer" onClick={() => track('/', 'telegram_click')}>JOIN OUR CHANNEL</a></div></div></section>
     <section className="wrap sec" id="latest"><h2>Latest signal</h2>
-      {d.error ? <ErrorBox /> : d.latest === undefined ? <Skel h={280} /> : !L ? <Empty title="No signals published yet" text="The first signal will appear here as soon as it is published."><a className="btn" href={TG} target="_blank" rel="noopener noreferrer">JOIN OUR TELEGRAM</a></Empty> :
+      {d.error ? <ErrorBox /> : d.latest === undefined ? <Skel h={280} /> : !L ? <Empty title="No signals published yet" text="The first signal will appear here as soon as it is published."><a className="btn" href={TG} target="_blank" rel="noopener noreferrer" onClick={() => track('/', 'telegram_click')}>JOIN OUR CHANNEL</a></Empty> :
         <article className={'card feature ' + (L.direction === 'BUY' ? 'buy' : 'sell')}><div className="dgrid"><div>
           <div className="row between"><h3 className="big"><Link to={'/signals/' + L.id}>{L.pair}</Link></h3><span className={'tag solid ' + (L.direction === 'BUY' ? 'up' : 'down')}>{L.direction}</span></div>
           <p className="muted small">{new Date(L.signal_at).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })}{L.session ? ' · ' + L.session : ''}</p>

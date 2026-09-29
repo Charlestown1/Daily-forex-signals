@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 export const sb = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY)
-export const TG = 'https://t.me/+4bOvhRlsT_A5MjFk'
+export const TG = 'https://t.me/dailyforexsignald'
 export const imgUrl = p => (p ? sb.storage.from('signal-images').getPublicUrl(p).data.publicUrl : null)
 const vid = () => { try { let v = localStorage.getItem('vid'); if (!v) { v = crypto.randomUUID(); localStorage.setItem('vid', v) } return v } catch { return null } }
 export function track(path, event = 'pageview') {

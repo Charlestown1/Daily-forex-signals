@@ -2,7 +2,7 @@ import React from 'react'
 import { TG, track } from '../lib/supabase.js'
 import { Link } from '../lib/nav.jsx'
 import { useSeo } from '../lib/seo.js'
-export const TgCta = ({ from }) => <section className="card cta"><h2>Get more updates on Telegram</h2><p>Join the community for extra updates and trade notes.</p><a className="btn" href={TG} target="_blank" rel="noopener noreferrer" onClick={() => track(from, 'telegram_click')}>JOIN OUR TELEGRAM</a></section>
+export const TgCta = ({ from }) => <section className="card cta"><h2>Follow our Telegram channel</h2><p>Join the channel for signal alerts and trade updates.</p><a className="btn" href={TG} target="_blank" rel="noopener noreferrer" onClick={() => track(from, 'telegram_click')}>JOIN OUR CHANNEL</a></section>
 export default function About() {
   useSeo('About – Daily Forex Signals', 'How Daily Forex Signals publishes trade ideas, reports results and why a transparent history matters.')
   return <div className="wrap sec prose"><h1 className="h2">About Daily Forex Signals</h1>
