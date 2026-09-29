@@ -1,12 +1,20 @@
 import { useEffect } from 'react'
-const set = (sel, attr, val, tag = 'meta', key) => { let el = document.head.querySelector(sel); if (!el) { el = document.createElement(tag); if (key) el.setAttribute(key[0], key[1]); document.head.appendChild(el) } el.setAttribute(attr, val) }
+
+const SITE = (import.meta.env.VITE_SITE_URL || 'https://daily-forex-signals.onrender.com').replace(/\/$/, '')
+
+const ensure = (selector, tag, attrs) => {
+  let el = document.head.querySelector(selector)
+  if (!el) { el = document.createElement(tag); Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v)); document.head.appendChild(el) }
+  return el
+}
+
 export function useSeo(title, desc, path = location.pathname) {
   useEffect(() => {
     document.title = title
-    const site = (import.meta.env.VITE_SITE_URL || '').replace(/\/$/, '')
-    const M = (n, v, p) => set(`meta[${p ? 'property' : 'name'}="${n}"]`, 'content', v, 'meta', [p ? 'property' : 'name', n])
-    M('description', desc); M('og:title', title, 1); M('og:description', desc, 1); M('og:type', 'website', 1)
-    M('twitter:card', 'summary'); M('twitter:title', title); M('twitter:description', desc)
-    if (site) { set('link[rel=canonical]', 'href', site + path, 'link', ['rel', 'canonical']); M('og:url', site + path, 1) }
+    const meta = (key, val, prop) => ensure(`meta[${prop ? 'property' : 'name'}="${key}"]`, 'meta', { [prop ? 'property' : 'name']: key }).setAttribute('content', val)
+    meta('description', desc)
+    meta('og:title', title, 1); meta('og:description', desc, 1); meta('og:type', 'website', 1); meta('og:url', SITE + path, 1)
+    meta('twitter:card', 'summary'); meta('twitter:title', title); meta('twitter:description', desc)
+    ensure('link[rel="canonical"]', 'link', { rel: 'canonical' }).setAttribute('href', SITE + path)
   }, [title, desc, path])
 }
