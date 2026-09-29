@@ -34,3 +34,25 @@ label{display:block;margin-bottom:12px;font-size:.88rem;font-weight:600}fieldset
 .spin{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--acc);border-radius:50%;animation:r .7s linear infinite;margin-right:8px;vertical-align:-2px}@keyframes r{to{transform:rotate(360deg)}}
 :focus-visible{outline:3px solid var(--acc);outline-offset:2px}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media(max-width:520px){.sec{padding:28px 16px}.wrap{padding:0 16px}.levels{grid-template-columns:repeat(2,1fr)}}
+/* ---- Typography ---- */
+:root{--font-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;--font-head:'Plus Jakarta Sans','Inter',system-ui,sans-serif}
+body{font-family:var(--font-body);font-size:17px;line-height:1.65}
+h1,h2,h3,h4,.brand,.stat b,.result b,.result span,.btn{font-family:var(--font-head)}
+h1{font-size:clamp(2.5rem,9vw,4.25rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;max-width:16ch}
+h2,.h2{font-size:clamp(1.6rem,4.5vw,2.1rem);font-weight:800;letter-spacing:-.03em}
+h3{font-weight:700;letter-spacing:-.02em}
+.lead{font-size:1.2rem;line-height:1.7}
+
+/* ---- Brand (larger) ---- */
+.brand{display:inline-flex;align-items:center;gap:10px;font-size:1.55rem;font-weight:800;letter-spacing:-.035em;color:var(--fg)}
+.brand svg{color:var(--acc);flex:none}
+@media(max-width:520px){.brand{font-size:1.3rem}.brand svg{width:22px;height:22px}}
+
+/* ---- Dark mode toggle (clearly a switch) ---- */
+.theme{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:6px 8px 6px 14px;border-radius:99px;border:1.5px solid var(--acc);background:var(--acc2);color:var(--fg);font:600 .9rem var(--font-body);cursor:pointer}
+.theme svg{color:var(--acc)}
+.theme .track{position:relative;width:40px;height:22px;border-radius:99px;background:var(--line);flex:none;transition:background .2s}
+.theme .track b{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.35);transition:transform .2s}
+.theme[aria-pressed=true] .track{background:var(--acc)}
+.theme[aria-pressed=true] .track b{transform:translateX(18px)}
+.theme:hover{box-shadow:var(--sh)}
